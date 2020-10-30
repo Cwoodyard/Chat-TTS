@@ -26,7 +26,7 @@ MODULES.moduleClasses["chat_tts"] = class {
         });
     }
 
-    check(force = true) {
+    check(force = false) {
         if ((force || !this.audio || this.audio.paused) && (this.queue.length > 0)) {
             this.audio = new Audio("https://api.casterlabs.co/v1/polly?voice=" + this.settings.text_to_speech_voice + "&text=" + this.queue.shift());
 
