@@ -26,7 +26,6 @@ MODULES.moduleClasses["chat_tts"] = class {
 
     check(force = true) {
         if ((force || !this.audio || this.audio.paused) && (this.queue.length > 0)) {
-            this.waitSeconds(10);
             this.audio = new Audio("https://api.casterlabs.co/v1/polly?voice=" + this.settings.text_to_speech_voice + "&text=" + this.queue.shift());
 
             this.audio.addEventListener("end", () => {
@@ -35,6 +34,7 @@ MODULES.moduleClasses["chat_tts"] = class {
             });
 
             this.audio.play();
+            console.log(this.queue);
         }
     }
 
